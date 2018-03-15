@@ -1,0 +1,16 @@
+<%# This presumes that only the page actions will ONLY be turned on for resource and 
+archival_object pages %>
+
+<%# Use HTML5's download attribute; possibly specify a better filename, as well. %>
+
+    <a href="http://archives.yale.edu/pdfs/<% if record.primary_type == 'resource' %>
+<%= filename = record.uri.split('/')[-1] %>
+<% else %>
+<%= filename = record.resource_uri.split('/')[-1] %>
+<% end %>.pdf" class="btn btn-default page_action print" target="_blank">
+      <i class="fa fa-file-pdf-o fa-3x"></i>
+      <br/>
+      <span class="print-label">
+	<%= t("plugin.yale_pdf.action_label") %>
+      </span>
+    </a>

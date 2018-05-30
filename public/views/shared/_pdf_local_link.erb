@@ -3,7 +3,7 @@ archival_object pages %>
 
 <%# Use HTML5's download attribute; possibly specify a better filename, as well. %>
 
-    <a href="http://archives.yale.edu/pdfs/<% if record.primary_type == 'resource' %>
+    <a href="http://ead-pdfs.library.yale.edu/<% if record.primary_type == 'resource' %>
 <%= filename = record.uri.split('/')[-1] %>
 <% else %>
 <%= filename = record.resource_uri.split('/')[-1] %>

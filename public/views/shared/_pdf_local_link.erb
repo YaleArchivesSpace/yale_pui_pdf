@@ -1,13 +1,28 @@
-<%# This presumes that only the page actions will ONLY be turned on for resource and 
+<%# This presumes that only the page actions will ONLY be turned on for resource and
 archival_object pages %>
 
-<%# Use HTML5's download attribute; possibly specify a better filename, as well. %>
+<%# Use HTML5's download attribute; possibly specify a better filename, as well.
+can do that by grabbing the 2nd item in the breadcrumb, which is the colleciton title.
 
-    <a href="http://ead-pdfs.library.yale.edu/<% if record.primary_type == 'resource' %>
-<%= filename = record.uri.split('/')[-1] %>
-<% else %>
-<%= filename = record.resource_uri.split('/')[-1] %>
-<% end %>.pdf" class="btn btn-default page_action print" target="_blank">
+%>
+<%
+if record.primary_type == 'resource'
+  filename = record.uri.split('/')[-1]
+  title = "archives_at_yale_resource_" + record.uri
+else
+  filename = record.resource_uri.split('/')[-1]
+  title = "archives_at_yale_resource_" + record.resource_uri
+end
+%>
+<%#
+should be:
+http://ead-pdfs.library.yale.edu/
+but redirects are happening now, so using as13dev
+%>
+ <a href="http://as13dev.library.yale.edu/<%= filename %>.pdf"
+    class="btn btn-default page_action print"
+    download="<%= filename %>.pdf"
+     target="_blank">
       <i class="fa fa-file-pdf-o fa-3x"></i>
       <br/>
       <span class="print-label">

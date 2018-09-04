@@ -14,12 +14,8 @@ else
   title = "archives_at_yale_resource_" + record.resource_uri
 end
 %>
-<%#
-should be:
-http://ead-pdfs.library.yale.edu/
-but redirects are happening now, so using as13dev
-%>
- <a href="http://as13dev.library.yale.edu/<%= filename %>.pdf"
+
+ <a href="http://ead-pdfs.library.yale.edu/<%= filename %>.pdf"
     class="btn btn-default page_action print"
     download="<%= filename %>.pdf"
      target="_blank">
